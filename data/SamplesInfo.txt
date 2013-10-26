@@ -1,0 +1,7 @@
+fileName	dataOrigin	cellType	sampleName	experimentType	dataType	link
+wgEncodeBroadHistoneH1hescCtcfStdAlnRep1.chr21.bam	Encode	H1hesc	Ctcf	ChipSeq	Reads	http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeBroadHistone/wgEncodeBroadHistoneH1hescCtcfStdAlnRep1.bam
+wgEncodeBroadHistoneH1hescP300kat3bAlnRep1.chr21.bam	Encode	H1hesc	P300	ChipSeq	Reads	http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeBroadHistone/wgEncodeBroadHistoneH1hescP300kat3bAlnRep1.bam
+wgEncodeBroadHistoneH1hescSuz12051317AlnRep1.chr21.bam	Encode	H1hesc	Suz12	ChipSeq	Reads	http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeBroadHistone/wgEncodeBroadHistoneH1hescSuz12051317AlnRep1.bam
+wgEncodeHaibTfbsH1hescRad21V0416102AlnRep1.chr21.bam	Encode	H1hesc	Rad21	ChipSeq	Reads	http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeHaibTfbs/wgEncodeHaibTfbsH1hescRad21V0416102AlnRep1.bam
+wgEncodeSydhTfbsH1hescZnf143IggrabAlnRep1.chr21.bam	Encode	H1hesc	Znf143	ChipSeq	Reads	http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeSydhTfbs/wgEncodeSydhTfbsH1hescZnf143IggrabAlnRep1.bam
+GSM429321_UCSD.H1.Bisulfite-Seq.combined.chr21.bedGraph.gz	RoadmapEpigenetics	H1hesc	Methylation	BisulphiteSequencing	Methylation Calls	ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM429nnn/GSM429321/suppl/GSM429321_UCSD.H1.Bisulfite-Seq.combined.wig.gz

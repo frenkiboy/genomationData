@@ -37,23 +37,8 @@ olocale=Sys.setlocale(locale="C")
 % ----------------------------------------------------------------- %
 \section{Introduction}
 
-This document briefly describes the content of the \Rpackage{FANTOM3and4CAGE} data package. 
-\Rpackage{FANTOM3and4CAGE} is a Bioconductor-compliant R package that contains Cap Analysis of Gene Expression (CAGE) sequencing data 
-produced by FANTOM consortium (\href{http://fantom.gsc.riken.jp/}{http://fantom.gsc.riken.jp/}). CAGE (\cite{Kodzius:2006}) is a high-throughput method for transcriptome
-analysis that utilizes "cap-trapping" (\cite{Carninci:1996}), a technique based on the biotinylation of the 7-methylguanosine cap of Pol II transcripts, 
-to pulldown the 5'-complete cDNAs reversely transcribed from the captured transcripts. This enables the sequencing of short fragments from 5' ends, which can be mapped back to 
-the referent genome to infer the exact position of the transcription start sites (TSSs) used for transcription of captured RNAs. Number of CAGE tags supporting each 
-TSS gives the information on relative frequency of its usage and can be used as a measure of expression from that specific TSS. Thus, CAGE provides information 
-on two aspects of capped transcriptome: genome-wide 1bp-resolution map of transcription start sites and transcript expression levels. This information can be used for 
-various analyses, from 5' centered expression profiling (\cite{Takahashi:2012}) to studying promoter architecture (\cite{Carninci:2006}).
-
-This data package contains genomic coordinates of TSSs and number of CAGE tags supporting each TSS in various mouse and human samples analysed by 
-CAGE in FANTOM3 and FANTOM4 projects. The data was originally published in main FANTOM publications (\cite{Carninci:2005}, \cite{Carninci:2006}, \cite{Suzuki:2009}, \cite{Faulkner:2009}), 
-and represents a valuable resource of genome-wide TSSs for mouse and human. All of the data was downloaded from the FANTOM web 
-resource (\cite{Kawaji:2010}, \href{http://fantom.gsc.riken.jp/4/download/}{http://fantom.gsc.riken.jp/4/download/}) and was 
-organized into datasets by organism and tissue of origin. All human data is mapped to hg18 assembly, and mouse data to mm9 assembly of the genome. Figure~\ref{fig:FANTOM3and4CAGEpackageStructure} schematically describes the organization and the structure of the data in 
-the \Rpackage{FANTOM3and4CAGE} package.
-
+\Rpackage{genomationData} is a Bioconductor-compliant R package that contains raw and processed data from high throughput genomics experiments. The data is originaly intended for demonstration of the Bioconductor package \Rpackage{genomation}.
+\Rpackage{genomationData} holds data from CHiP Seq and Bisulphite sequencing experiments produced by Encode and Epigenetics Roadmap. All datasets come from human H1 embryonic stem cell line and are mapped to the hg19/GRCh37 version of the genome.
 
 
 % ----------------------------------------------------------------- %
@@ -61,66 +46,31 @@ the \Rpackage{FANTOM3and4CAGE} package.
 
 To load the \Rpackage{genomationData} package into your R envirnoment type:
 <<>>=
-library(FANTOM3and4CAGE)
+library(genomationData)
 @
 
-\subsection{Listing available files}
-As shown in Figure~\ref{fig:FANTOM3and4CAGEpackageStructure}, there are six datasets (shaded in blue) that can be loaded via 
-call to \Rcode{data()} function. Two of them are \Rcode{data.frames} that describe the content of the remaining four datasets. 
-These are \Rcode{FANTOMhumanSamples} and \Rcode{FANTOMmouseSamples}, for human and mouse, respectively.
-\newline
-
-To load the list of human samples type:
+\subsection{Sample description}
+To list the available files type:
 <<>>=
-data(FANTOMhumanSamples)
-head(FANTOMhumanSamples, 10)
+list.files(system.data(package='genomationData'))
 @
 
-\subsection{Loading file description}
-The information is organized into three columns:
-\begin{itemize}
-\item
-\Rcode{dataset}: the name of the dataset that can be loaded using \Rcode{data()} function
-\item
-\Rcode{group}: the name of the group of samples that originate from the same tissue (\emph{e.g.} blood)
-\item
-\Rcode{sample}: the name of the specific sample
-\end{itemize}
+The package currently holds 5 CHiP Sequencing and one Bisulfite sequencing samples. 
+Files with the .bam extension contain raw CHiP seq reads, while  *.broadPeak and *.narrowPeak represent processed peaks. Due to the large sizes of the samples, the *.bam files have been restricted to human chromosome 21 (chr21).
+GSM429321_UCSD.H1.Bisulfite-Seq.combined.chr21.bedGraph.gz contains methylation calls for each CpG dinucleotide on human chromosome 21. The original file was converted from wig into bedGraph format using the standard UCSC applications.
 
-\subsection{CAGE datasets for various tissues}
-The \Rcode{FANTOMtissueCAGEhuman} and \Rcode{FANTOMtissueCAGEmouse} datasets contain CAGE data organized by tissue of origin:
+To see complete information about the files, take a look into SamplesInfo.txt
 <<>>=
-data(FANTOMtissueCAGEhuman)
-names(FANTOMtissueCAGEhuman)
+samp.info = read.table(file.path(system.data(package='genomationData','SamplesInfo.txt'), header=T)
+head(samp.info)
 @
-It is a named list, where names correspond to entries in the \Rcode{group} column (in the \Rcode{data.frame} listing all the samples) and indicate tissue of origin. Each element of the 
-list is a \Rcode{data.frame} with genomic coordinates of TSSs detected in that group of samples followed by columns with numbers of CAGE tags 
-supporting each TSS in every individual sample. The names of columns correspond to entries in the \Rcode{sample} column (in the \Rcode{data.frame} listing all the samples) and describe 
-individual samples.
-<<>>=
-lung_group <- FANTOMtissueCAGEhuman[["lung"]]
-head(lung_group)
-@
-
-\subsection{CAGE timecourse datasets}
-In addition to CAGE data for various tissue types, there are timecourse datasets available in \Rpackage{FANTOM3and4CAGE} package. 
-These are \Rcode{FANTOMtimecourseCAGEhuman} and \Rcode{FANTOMtimecourseCAGEmouse}, for human and mouse, respectively. 
-<<>>=
-data(FANTOMtimecourseCAGEmouse)
-names(FANTOMtimecourseCAGEmouse)
-head(FANTOMtimecourseCAGEmouse[["adipogenic_induction"]])
-@
-They are organized in the same way as tissue datasets described above, \emph{i.e.} each element of the list is a \Rcode{data.frame} with CAGE 
-detected TSSs for one timecourse.
 
 % ----------------------------------------------------------------- %
 \section{Session Info}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 <<>>=
 sessionInfo()
 @
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliographystyle{apalike}
 \bibliography{genomationData}
 \end{document}
