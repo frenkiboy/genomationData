@@ -20,9 +20,6 @@
 
 \begin{document}
 
-<<include=FALSE>>=
-opts_chunk$set(concordance=TRUE)
-@
 
 \maketitle
 
