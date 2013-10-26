@@ -1,6 +1,6 @@
-%\VignetteIndexEntry{FANTOM3and4CAGE}
-%\VignetteKeywords{FANTOM3and4CAGE}
-%\VignettePackage{FANTOM3and4CAGE}
+%\VignetteIndexEntry{genomationData}
+%\VignetteKeywords{genomationData}
+%\VignettePackage{genomationData}
 
 \documentclass[12pt]{article}
 
@@ -19,11 +19,11 @@
 \newcommand{\Rcode}[1]{{\texttt{#1}}}
 \newcommand{\Rpackage}[1]{{\textit{#1}}}
 
-\author{Vanja Haberle \footnote{Department of Biology, University of Bergen, Bergen,  Norway}}
+\author{Altuna Akalin & Vedran Franke}
 
-\title{\textsf{FANTOM3and4CAGE: an R data package with CAGE data from FANTOM3 and FANTOM4 projects}}
+\title{\textsf{genomationData: R package with various types of genomic data}}
 
-\date{February 6, 2013}
+\date{October 25, 2013}
 
 \begin{document}
 <<setup, echo=FALSE>>=
@@ -34,9 +34,9 @@ olocale=Sys.setlocale(locale="C")
 
 \tableofcontents
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ----------------------------------------------------------------- %
 \section{Introduction}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 This document briefly describes the content of the \Rpackage{FANTOM3and4CAGE} data package. 
 \Rpackage{FANTOM3and4CAGE} is a Bioconductor-compliant R package that contains Cap Analysis of Gene Expression (CAGE) sequencing data 
 produced by FANTOM consortium (\href{http://fantom.gsc.riken.jp/}{http://fantom.gsc.riken.jp/}). CAGE (\cite{Kodzius:2006}) is a high-throughput method for transcriptome
@@ -54,31 +54,29 @@ resource (\cite{Kawaji:2010}, \href{http://fantom.gsc.riken.jp/4/download/}{http
 organized into datasets by organism and tissue of origin. All human data is mapped to hg18 assembly, and mouse data to mm9 assembly of the genome. Figure~\ref{fig:FANTOM3and4CAGEpackageStructure} schematically describes the organization and the structure of the data in 
 the \Rpackage{FANTOM3and4CAGE} package.
 
-\begin{figure}[h!]
-\centering
-\includegraphics[width = 105mm]{images/FANTOM3and4CAGEpackageStructure.pdf}
-\caption{Content and structure of data in \Rpackage{FANTOM3and4CAGE} data package}
-\label{fig:FANTOM3and4CAGEpackageStructure}
-\end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ----------------------------------------------------------------- %
 \section{Getting started}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-To load the \Rpackage{FANTOM3and4CAGE} package into your R envirnoment type:
+
+To load the \Rpackage{genomationData} package into your R envirnoment type:
 <<>>=
 library(FANTOM3and4CAGE)
 @
 
-\subsection{Listing available CAGE samples}
+\subsection{Listing available files}
 As shown in Figure~\ref{fig:FANTOM3and4CAGEpackageStructure}, there are six datasets (shaded in blue) that can be loaded via 
 call to \Rcode{data()} function. Two of them are \Rcode{data.frames} that describe the content of the remaining four datasets. 
 These are \Rcode{FANTOMhumanSamples} and \Rcode{FANTOMmouseSamples}, for human and mouse, respectively.
 \newline
+
 To load the list of human samples type:
 <<>>=
 data(FANTOMhumanSamples)
 head(FANTOMhumanSamples, 10)
 @
+
+\subsection{Loading file description}
 The information is organized into three columns:
 \begin{itemize}
 \item
@@ -115,7 +113,7 @@ head(FANTOMtimecourseCAGEmouse[["adipogenic_induction"]])
 They are organized in the same way as tissue datasets described above, \emph{i.e.} each element of the list is a \Rcode{data.frame} with CAGE 
 detected TSSs for one timecourse.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ----------------------------------------------------------------- %
 \section{Session Info}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 <<>>=
@@ -124,5 +122,5 @@ sessionInfo()
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliographystyle{apalike}
-\bibliography{FANTOM3and4CAGE}
+\bibliography{genomationData}
 \end{document}
