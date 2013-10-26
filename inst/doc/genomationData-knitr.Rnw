@@ -43,7 +43,7 @@ library(genomationData)
 \subsection{Sample description}
 To list the available files type:
 <<listFiles, eval=FALSE>>=
-list.files(system.file(package='genomationData'))
+list.files(system.file('extdata',package='genomationData'))
 @
 
 The package currently holds 5 CHiP Sequencing and one Bisulfite sequencing samples. 
@@ -56,7 +56,7 @@ The original file was converted from wig into bedGraph format using the standard
 \\
 To see complete information about the files, take a look into SamplesInfo.txt
 <<readSampInfo, tidy=TRUE, eval=FALSE>>=
-samp.info = read.table(system.file('SamplesInfo.txt', package='genomationData'), header=TRUE)
+samp.info = read.table(system.file('extdata/SamplesInfo.txt', package='genomationData'), header=TRUE, sep='\t')
 head(samp.info)
 @
 

@@ -71,8 +71,6 @@
 \begin{document}
 
 
-
-
 \maketitle
 
 \tableofcontents
@@ -102,7 +100,7 @@ To list the available files type:
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{list.files}\hlstd{(}\hlkwd{system.file}\hlstd{(}\hlkwc{package} \hlstd{=} \hlstr{"genomationData"}\hlstd{))}
+\hlkwd{list.files}\hlstd{(}\hlkwd{system.file}\hlstd{(}\hlstr{"extdata"}\hlstd{,} \hlkwc{package} \hlstd{=} \hlstr{"genomationData"}\hlstd{))}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -120,8 +118,8 @@ To see complete information about the files, take a look into SamplesInfo.txt
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{samp.info} \hlkwb{=} \hlkwd{read.table}\hlstd{(}\hlkwd{system.file}\hlstd{(}\hlstr{"SamplesInfo.txt"}\hlstd{,} \hlkwc{package} \hlstd{=} \hlstr{"genomationData"}\hlstd{),}
-    \hlkwc{header} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlstd{samp.info} \hlkwb{=} \hlkwd{read.table}\hlstd{(}\hlkwd{system.file}\hlstd{(}\hlstr{"extdata/SamplesInfo.txt"}\hlstd{,} \hlkwc{package} \hlstd{=} \hlstr{"genomationData"}\hlstd{),}
+    \hlkwc{header} \hlstd{=} \hlnum{TRUE}\hlstd{,} \hlkwc{sep} \hlstd{=} \hlstr{"\textbackslash{}t"}\hlstd{)}
 \hlkwd{head}\hlstd{(samp.info)}
 \end{alltt}
 \end{kframe}
