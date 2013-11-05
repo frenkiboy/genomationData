@@ -10,4 +10,5 @@ wgEncodeBroadHistoneH1hescSuz12051317Pk.broadPeak.gz	Encode	H1hesc	Suz12	ChipSeq
 wgEncodeHaibTfbsH1hescRad21V0416102PkRep1.broadPeak.gz	Encode	H1hesc	Rad21	ChipSeq	Peaks	http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeHaibTfbs/wgEncodeHaibTfbsH1hescRad21V0416102PkRep1.broadPeak.gz
 wgEncodeSydhTfbsH1hescZnf143IggrabPk.narrowPeak.gz	Encode	H1hesc	Znf143	ChipSeq	Peaks	http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeSydhTfbs/wgEncodeSydhTfbsH1hescZnf143IggrabPk.narrowPeak.gz
 H1.Bisulfite-Seq.combined.chr21.bedGraph	RoadmapEpigenetics	H1hesc	Methylation	BisulphiteSequencing	Methylation Calls	ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM429nnn/GSM429321/suppl/GSM429321_UCSD.H1.Bisulfite-Seq.combined.wig.gz
-wgEncodeRikenCageA549CellPapAlnRep1.chr21.bam	Encode	H1esc	CAGE	CAGE reads	""
+wgEncodeRikenCageA549CellPapAlnRep1.chr21.bam	Encode	H1hesc	CAGE	CAGE reads	Reads	""""""
+wgEncodeHaibTfbsA549Rad21V0422111RawRep1.chr21.bw	Encode	H1hesc	Rad21	ChipSeq	BigWig	http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeHaibTfbs/wgEncodeHaibTfbsA549Rad21V0422111RawRep1.bigWig
