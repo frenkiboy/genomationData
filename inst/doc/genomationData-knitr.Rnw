@@ -1,0 +1,87 @@
+%\VignetteIndexEntry{genomationData}
+%\VignetteKeywords{genomationData}
+%\VignettePackage{genomationData}
+%\VignetteEngine{knitr::knitr}
+
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage[authoryear,round]{natbib}
+\usepackage{geometry}
+
+
+\newcommand{\Rcode}[1]{{\texttt{#1}}}
+\newcommand{\Rpackage}[1]{{\textit{#1}}}
+
+\author{Altuna Akalin, Vedran Franke}
+
+\title{\textsf{genomationData: R package with high throughput genomic data}}
+\geometry{verbose,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm,nomarginpar}
+
+
+
+\date{October 25, 2013}
+
+\begin{document}
+
+
+\maketitle
+
+\tableofcontents
+
+% ----------------------------------------------------------------- %
+\section{Introduction}
+
+\Rpackage{genomationData} is a Bioconductor-compliant R package that contains 
+raw and processed data from high throughput genomics experiments. The data is 
+originaly intended for demo of the Bioconductor package \Rpackage{genomation}.
+\Rpackage{genomationData} holds data from CHiP Seq and Bisulphite sequencing 
+experiments produced by Encode and Epigenetics Roadmap. All datasets come from 
+human H1 embryonic stem cell line and are mapped to the hg19/GRCh37 version of 
+the genome.
+
+
+% ----------------------------------------------------------------- %
+\section{Getting started}
+
+To load the \Rpackage{genomationData} package into your R envirnoment type:
+<<eval=FALSE, tidy=TRUE>>=
+library(genomationData)
+@
+
+\subsection{Sample description}
+To list the available files type:
+<<listFiles, eval=FALSE, tidy=TRUE>>=
+list.files(system.file('extdata',package='genomationData'))
+@
+
+The package currently holds 5 CHiP Sequencing and one Bisulfite sequencing 
+samples. 
+Files with the .bam extension contain raw CHiP seq reads, while *.broadPeak and 
+*.narrowPeak represent processed peaks. 
+Due to the large sizes of the samples, the *.bam files have been restricted to 
+human chromosome 21 (chr21).
+
+H1.Bisulfite-Seq.combined.chr21.bedGraph.gz' contains methylation calls for each
+CpG dinucleotide on human chromosome 21. 
+The original file was converted from wig into bedGraph format using the standard
+UCSC applications.
+
+To see complete information about the files, take a look into SamplesInfo.txt
+<<readSampInfo, eval=FALSE, tidy=FALSE>>=
+samp.file = system.file('extdata/SamplesInfo.txt',
+                        package='genomationData')
+samp.info = read.table(samp.file, header=TRUE, sep='\t')
+head(samp.info)
+@
+
+% ----------------------------------------------------------------- %
+\section{Session Info}
+<<sessionInfo>>=
+sessionInfo()
+@
+
+\bibliographystyle{apalike}
+\bibliography{genomationData}
+\end{document}
