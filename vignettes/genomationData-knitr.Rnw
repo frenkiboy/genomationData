@@ -82,6 +82,4 @@ head(samp.info)
 sessionInfo()
 @
 
-\bibliographystyle{apalike}
-\bibliography{genomationData}
 \end{document}
